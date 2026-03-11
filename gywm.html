@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PartyPixel · 关于我们</title>
+    <!-- 使用与官网一致的现代字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0c0f0c;
+            background-image: radial-gradient(circle at 30% 40%, #1e3a1e15 0%, transparent 30%),
+                              radial-gradient(circle at 70% 80%, #2d5a2d15 0%, transparent 40%);
+            font-family: 'Inter', sans-serif;
+            color: #eef4ee;
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1300px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* 导航栏 (与官网保持一致) */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 15px 0 25px;
+            border-bottom: 1px solid #2e462e;
+            margin-bottom: 40px;
+        }
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #b3f0b3, #d9ffb8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo span {
+            background: linear-gradient(135deg, #fae175, #ffd966);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: #c5e0c5;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: 0.2s;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ffffff;
+            border-bottom-color: #63c063;
+        }
+
+        /* 页面标题 */
+        .page-title {
+            text-align: center;
+            margin: 20px 0 40px;
+        }
+        .page-title h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(145deg, #daf5d0, #ecffd3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+        .page-title p {
+            font-size: 1.2rem;
+            color: #b2d8b2;
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(30, 50, 30, 0.5);
+            padding: 8px 25px;
+            border-radius: 60px;
+            border: 1px solid #4b7a4b;
+            display: inline-block;
+            backdrop-filter: blur(4px);
+        }
+
+        /* 通用卡片 */
+        .about-card {
+            background: #162016;
+            border: 1px solid #3b633b;
+            border-radius: 40px;
+            padding: 50px 40px;
+            margin: 30px 0 40px;
+            box-shadow: 0 20px 30px -12px black;
+        }
+
+        .section-subtitle {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #e2f5b8;
+            margin-bottom: 30px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        .section-subtitle i {
+            color: #f0c45a;
+        }
+
+        /* 简介部分 */
+        .intro-text {
+            font-size: 1.2rem;
+            color: #c2ddc2;
+            line-height: 1.8;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 20px;
+        }
+        .intro-highlight {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .highlight-item {
+            background: #1f3a1f;
+            border: 1px solid #569656;
+            border-radius: 60px;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.2rem;
+            color: #f0e49e;
+        }
+        .highlight-item i {
+            font-size: 1.8rem;
+            color: #9fe09f;
+        }
+
+        /* 团队网格 */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 40px 0 20px;
+        }
+        .team-member {
+            background: #1b281b;
+            border: 1px solid #468046;
+            border-radius: 30px;
+            padding: 30px 20px 25px;
+            text-align: center;
+            transition: 0.2s;
+        }
+        .team-member:hover {
+            border-color: #67b067;
+            background: #1f331f;
+            transform: translateY(-5px);
+        }
+        .member-avatar {
+            font-size: 4rem;
+            color: #daf5aa;
+            margin-bottom: 15px;
+        }
+        .member-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffefb5;
+            margin-bottom: 5px;
+        }
+        .member-role {
+            font-size: 1rem;
+            color: #a3d0a3;
+            margin-bottom: 12px;
+        }
+        .member-desc {
+            font-size: 0.95rem;
+            color: #bedabe;
+        }
+
+        /* 时间线/历程 */
+        .timeline {
+            margin: 30px 0;
+        }
+        .timeline-item {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 30px;
+            background: #121e12;
+            border-radius: 30px;
+            padding: 25px 30px;
+            border: 1px solid #4a7e4a;
+        }
+        .timeline-date {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f5e56b;
+            min-width: 120px;
+        }
+        .timeline-content h4 {
+            font-size: 1.3rem;
+            color: #f0e49e;
+            margin-bottom: 8px;
+        }
+        .timeline-content p {
+            color: #bedabe;
+        }
+
+        /* 价值观卡片 */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+        }
+        @media (max-width: 700px) {
+            .values-grid { grid-template-columns: 1fr; }
+        }
+        .value-item {
+            background: #1b281b;
+            border: 1px solid #468046;
+            border-radius: 30px;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .value-item i {
+            font-size: 3rem;
+            color: #f0c45a;
+            margin-bottom: 15px;
+        }
+        .value-item h4 {
+            font-size: 1.3rem;
+            color: #ffefb5;
+            margin-bottom: 10px;
+        }
+        .value-item p {
+            color: #c2ddc2;
+        }
+
+        /* 底部 */
+        .footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 0 20px;
+            border-top: 1px solid #386238;
+            color: #a1c5a1;
+            margin-top: 20px;
+        }
+        .social a {
+            color: #b8e5b8;
+            font-size: 2rem;
+            margin-left: 20px;
+            transition: 0.2s;
+        }
+        .social a:hover {
+            color: #fcfc9c;
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 600px) {
+            .page-title h1 { font-size: 2.5rem; }
+            .timeline-item { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 导航栏 (高亮“关于”) -->
+        <nav class="navbar">
+            <div class="logo">Party<span>Pixel</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">主页</a></li>
+                <li><a href="#">社区</a></li>
+                <li><a href="charity.html">公益</a></li>
+                <li><a href="shop.html">商店</a></li>
+                <li><a href="#" class="active">关于我们</a></li>
+            </ul>
+        </nav>
+
+        <!-- 页面标题 -->
+        <div class="page-title">
+            <h1>📖 关于我们</h1>
+            <p>了解 PartyPixel 的团队</p>
+        </div>
+
+        <!-- 主内容卡片 -->
+        <div class="about-card">
+            <!-- 服务器简介 -->
+            <div class="section-subtitle">
+                <i class="fas fa-cube"></i> 服务器简介 <i class="fas fa-cube"></i>
+            </div>
+            <div class="intro-text">
+                <p>PartyPixel 成立于 2025 年，是一个以 <strong style="color: #f5e56b;">纯净生存</strong> 为核心的 Minecraft 服务器。我们致力于为玩家提供最原汁原味的生存体验，同时融入经济、领地、活动等元素，打造一个温暖、活跃的社区。</p>
+                <p style="margin-top: 20px;">三年来，我们坚持 <strong style="color: #f5e56b;">无魔改、公平、稳定</strong> 的原则，收获了近千名玩家的信任与支持。</p>
+            </div>
+            <div class="intro-highlight">
+                <div class="highlight-item"><i class="fas fa-users"></i> 80+ 注册玩家</div>
+                <div class="highlight-item"><i class="fas fa-calendar-alt"></i> 114514 小时运营</div>
+                <div class="highlight-item"><i class="fas fa-heart"></i> 78+ 活跃成员</div>
+            </div>
+
+            <!-- 核心团队 -->
+            <div class="section-subtitle" style="margin-top: 60px;">
+                <i class="fas fa-user-friends"></i> 核心团队 <i class="fas fa-user-friends"></i>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar"><i class="fas fa-crown"></i></div>
+                    <div class="member-name">ya_xzer21145</div>
+                    <div class="member-role">服主 · 创始人</div>
+                    <div class="member-desc">热爱生存与红石，负责服务器整体运营与发展。</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar"><i class="fas fa-shield-halbed"></i></div>
+                    <div class="member-name">TechCat</div>
+                    <div class="member-role">技术运维</div>
+                    <div class="member-desc">保障服务器稳定运行，处理各类技术问题。</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar"><i class="fas fa-paint-brush"></i></div>
+                    <div class="member-name">BuilderFox</div>
+                    <div class="member-role">建筑·活动策划</div>
+                    <div class="member-desc">主城建筑师，每周活动组织者。</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar"><i class="fas fa-gavel"></i></div>
+                    <div class="member-name">CFB_103</div>
+                    <div class="member-role">暂定管理员</div>
+                    <div class="member-desc">维护游戏秩序，处理玩家反馈。</div>
+                </div>
+            </div>
+
+            <!-- 发展历程 -->
+            <div class="section-subtitle" style="margin-top: 60px;">
+                <i class="fas fa-timeline"></i> 发展历程 <i class="fas fa-timeline"></i>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2025.07</div>
+                    <div class="timeline-content">
+                        <h4>🎉 服务器成立</h4>
+                        <p>PartyPixel 正式开放，以纯净生存为起点。(目前服务器还叫BedLam)</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2025.12</div>
+                    <div class="timeline-content">
+                        <h4>📈 更名改版</h4>
+                        <p>。<服务器更名为PartyPixel/p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2026.01</div>
+                    <div class="timeline-content">
+                        <h4>🏆 正式发展生存</h4>
+                        <p>多名玩家参与公测。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2026.02</div>
+                    <div class="timeline-content">
+                        <h4>🌱 启动公益计划</h4>
+                        <p>将25%赞助收入用于公益捐赠，传递爱心。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 我们的价值观 -->
+            <div class="section-subtitle" style="margin-top: 40px;">
+                <i class="fas fa-heart"></i> 我们的价值观 <i class="fas fa-heart"></i>
+            </div>
+            <div class="values-grid">
+                <div class="value-item">
+                    <i class="fas fa-feather"></i>
+                    <h4>纯净</h4>
+                    <p>尊重原版机制，拒绝魔改，保留Minecraft最本真的乐趣。</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-handshake"></i>
+                    <h4>公平</h4>
+                    <p>严格反作弊，无付费特权，一切靠努力获得。</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-tree"></i>
+                    <h4>社区</h4>
+                    <p>打造温暖友好的玩家社群，让每一位成员找到归属感。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部 (与官网一致) -->
+        <footer class="footer">
+            <div>健康游戏忠告：抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活。</div>
+            <div>Copyright © 2025 - 2026 PartyPixel. All Rights Reserved.</div>
+            <div class="social">
+                <a href="#" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                <a href="#" target="_blank" aria-label="QQ"><i class="fab fa-qq"></i></a>
+                <a href="#" target="_blank" aria-label="BiliBili"><i class="fab fa-bilibili"></i></a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
